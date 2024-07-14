@@ -1,8 +1,0 @@
-1. What is java ?
-    Java is class based, object- oriented programming and robust language .
-java developed by Sun Microsystems in 1995, now owned by Oracle Corporation.
-Java is platform indepedent, object oriented and secure.
-
-2. Java is not 100% object oriented ?
-    According to oops, Everything evolves arounds the object but java supports primitive datatype which are not object.
-we use wrapper class to make it object oriented, which wrap the primitive datatype into object.

@@ -1,0 +1,93 @@
+1. What is java ?
+    Java is class based, object- oriented programming and robust language .
+java developed by Sun Microsystems in 1995, now owned by Oracle Corporation.
+Java is platform indepedent, object oriented and secure.
+
+2. Java is not 100% object oriented , Justify ?
+    According to oops, Everything evolves arounds the object but java supports primitive datatype which are not object.
+we use wrapper class to make it object oriented, which wrap the primitive datatype into object.
+
+3. is pointer used in java ?
+    No,
+    -It increases code complexity.
+    -It is unsafe.
+    -JVM is responsible for memory allocation. 
+        To avoid direct access to memory pointer is avoid.
+
+4. Difference between Function and Method .
+    -Function is written inside / outside of class in c++ but it is not used in java.
+    -Method is written inside the class in java.
+        and both are contains logic of code.
+
+5. Java is robust language .
+    Java is Strong it not easily crash. java hava excillent inbulid exception handling feature.
+
+6. Java is a high Performance Language .
+
+- JIT compiler :
+
+interpreter in JVM is slows. So, JVM uses JIT (Just in time) compilers to convert bytecode into machine code
+at runtime.
+it increases execution speed.
+
+-Multithreading :
+JVM uses Several thread to executes different block of code at same time. 
+
+-Scalability & portability.
+
+7. JVM (Java virtual Machine) :
+JVM is heart of the Java excution Process. it convert bytecode into machine code.
+
+it identify the processer & operating system used in different computer.
+
+.Java          ------------->   .class              ----------->  [ JVM ]  ---------> Machine code
+(Source File)                 (Which contaion byte code)
+
+(Object is created at heap)
+
+8. Execution Engine: 
+    Execution Engine contain both interpreter & JIT compiler which convert bytecode into machine code for better
+performance.
+
+9. 
+Javac classname.java : Compile the program.
+Java classname : Run the program file executed by calling JVM.
+
+10. Java is platform/system independent .
+    Bytecode is system independent 
+    but JVM is system dependent,
+    that convert byte code into machine code depending upon the system processor and operating system.
+    so java is system independent.
+
+11. JNI (Java native interface):
+        It is a programming language that enable java code to interact with the code that is written in the other 
+    programming language.
+
+12.JRE (Java runtime environment) :
+     It is a software that java required to run correctly.
+            JRE contains
+        [ JRE ]
+            -----------------------------
+            |         ( JVM )            |
+            |                            |
+            |     ( java Classes         |    
+            |           + Libraries )    |
+            |                            |
+            ------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
