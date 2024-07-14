@@ -56,7 +56,7 @@ it identify the processer & operating system used in different computer.
     Execution Engine contain both interpreter & JIT compiler which convert bytecode into machine code for better
 performance.
 
-9. 
+9. About java code running .
 Javac classname.java : Compile the program.
 Java classname : Run the program file executed by calling JVM.
 
@@ -70,7 +70,7 @@ Java classname : Run the program file executed by calling JVM.
         It is a programming language that enable java code to interact with the code that is written in the other 
     programming language.
 
-12.JRE (Java runtime environment) :
+12. JRE (Java runtime environment) :
      It is a software that java required to run correctly.
             JRE contains
         [ JRE ]
@@ -82,8 +82,134 @@ Java classname : Run the program file executed by calling JVM.
             |                            |
             ------------------------------
 
+13. which method is used to call garbage collection ?
+        System.gc()
 
+14. Concrete method :-
+        Method which is completly implemented in a class both have method body and header.
+   Ex :
+        public class Main{
+                void display(){       //this method is conctere method with both body and header.
+                        System.out.println("Hello");
+                }
+        public static void main(String[] args){
+                Main m=new Main();
+                m.display();
+        }
+        }
 
+15. Heirarchy :-
+        JAVA LIBRARY
+             |
+             |
+          PACKAGE
+             |
+             |
+        CLASS / INTEFACE
+             |
+             |
+           METHOD
+
+   EX :
+        Java.util -> Package
+        * -> all classes/interface in the respective package.
+
+16. Difference between #include and import .
+        #include :- This is used in c/c++.
+                In this complier goes into the standard library and copy the needed code from header to the code.
+                So that the program size increases.
+        import :- this is used inn Java.
+                In this compiler/JVM goes into the standard library and execute the needed code there and reduce
+                the program size.
+                So, no waste of memory is there.
+
+17. About main() method :-
+        i. In java, main() is the entry point of JVM to start execution.
+        ii. JVM will not excute if there is no main() mathod.
+
+        public static void main(String[] args)
+                NOTE :- if (String[] args) is not there then code will compile but JVM will not run the code.
+                     Because JVM required main() with String type array as parameter.
+
+18. Class of which Package :-
+String :- Class of java.lang package.
+System :- Class of java.lang package.
+        and 'out' is the static method of System class.
+Object :- Class which is the super class of all the classes in java.
+        present in java.lang package.
+Scanner :- Class of java.util package.
+        its object is used to obtaining the input of the primitive types like int, float etc.
+
+java.lang package :-
+
+    Object, String, Math, System, Thread,Throwable, Exception, RuntimeException,
+    Integer, Double,Boolean.
+
+java.util package :-
+
+    ArrayList,LinkedList,HashMap,HashSet,TreeMap,TreeSet,Date,Calendar,
+    Random,Collections,Arrays,Scanner.
+
+java.io
+
+    File,FileReader,FileWriter,BufferedReader,BufferedWriter,InputStream,
+     OutputStream,ObjectInputStream,ObjectOutputStream.
+
+java.net
+
+    URL
+    URLConnection
+    HttpURLConnection
+    InetAddress
+    Socket
+    ServerSocket.
+
+java.sql
+
+    Connection
+    DriverManager
+    ResultSet
+    SQLException
+    Statement
+    PreparedStatement
+
+java.time
+
+    LocalDate
+    LocalTime
+    LocalDateTime
+    ZonedDateTime
+    Instant
+    Duration
+    Period
+
+19. Difference between println() and print() method .
+        println() :- print the output and move the cursur to the next line.
+        print()   :- print the output and keep the cursur in same line.
+
+20. Describe main() method of java.
+        public static void main(String args[])
+        public : acess modifier .It made available main() to JVM.
+        static : it should be called without creating object.
+        void : method does not return anything.
+        main : method name.
+        String args[] : main() takes parameter that is String type array name args.
+
+21. Datatypes:
+
+        byte == 1 byte
+        short == 2 byte
+        int == 4 byte
+        float == 4 byte
+        double == 8 byte
+        long == 8 byte
+        char == 2 byte
+
+22. LITERALS:
+        It represents the value that is stored in a variable directly in code.
+        EX : 
+                int age = 22
+                        // 22 is literal.
 
 
 
