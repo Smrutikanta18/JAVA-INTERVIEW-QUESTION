@@ -1,10 +1,17 @@
+INTRODUCTION:
+        The "father of Java" is James Gosling. He led the development of Java while working at Sun Microsystems,
+    which was later acquired by Oracle Corporation.
+    Java was first released in 1995 and has since become one of the most widely used programming languages
+    in the world.
+
 1. What is java ?
     Java is class based, object- oriented programming and robust language .
 java developed by Sun Microsystems in 1995, now owned by Oracle Corporation.
 Java is platform indepedent, object oriented and secure.
 
 2. Java is not 100% object oriented , Justify ?
-    According to oops, Everything evolves arounds the object but java supports primitive datatype which are not object.
+    According to oops, Everything evolves arounds the object but java supports primitive datatype which 
+    are not object.
 we use wrapper class to make it object oriented, which wrap the primitive datatype into object.
 
 3. is pointer used in java ?
