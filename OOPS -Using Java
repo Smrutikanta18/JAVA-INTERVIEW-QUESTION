@@ -4,8 +4,410 @@ INTRODUCTION
   form of fields (often known as attributes or properties) and code in the form of methods.
 
 1. 5-pillar <or> feature of OOPs :
-    i  .Class/Object
-    ii .Encapsulation
-    iii.Polymorphism
-    iv .Inheritance
-    v  .Abstraction
+    1. Class/Object
+    2. Encapsulation
+    3. Polymorphism
+    4. Inheritance
+    5. Abstraction
+
+2. what is class and object ?
+    -class is a blueprint/templet for creating object.
+    -class does not physically present.
+    -EX :- Animal which is doesn't exist is class.
+            and cow, Dog, Tiger etc. are under the Animal which are exist
+            physically so these are Object.
+
+            Like that Color is class
+                and red, blue, green etc. are objects. 
+    -class encapsulate method and data member.
+    -Object is an instances of class.
+    -To use a class we have to create the object for that class.
+        and object is created using the ' new '  keyword.
+    (object creation means allocating memory for data of variables)
+
+    EXAMPLE :-
+
+            public class Car {
+    // Fields
+    private String brand;
+    private String model;
+    private int year;
+
+    // Methods
+    public void startEngine() {
+        System.out.println("Engine started.");
+    }
+
+    // Getter for brand
+    public String getBrand() {
+        return brand;
+    }
+
+    // Setter for brand
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating an object of the Car class
+        Car myCar = new Car("Toyota", "Corolla", 2020);
+
+        // Accessing the object's methods and fields
+        myCar.startEngine();
+        System.out.println("Brand: " + myCar.getBrand());
+    }
+}
+
+3. Hash code :-
+    When object is created memory is allocated at heap. After creation  JVM allocate a 
+  unique no to object according to the memory.
+    this is called by hashcode() method of java.lang package.
+
+4. Access Modifiers :-
+    Public : it can be accessible from anywhere from inside/outside of the class.
+            Other program can also read it and use it.
+    Private : It can be accessible only inside the class/method of the class.
+    Protected : It can be accessible from outsidde the class but within the same package.
+    Default : It can accessible inside the package.
+
+NOTE :- 
+    We can not make a class and main() method as private .Because it will not 
+  available to JVM to execute it- main() is entry point of java program.
+
+5. Constructor :
+    -Constructor is used to intialized the object. 
+    -Its name is same name as the Class.
+    -Its don't return anything even not void.
+    -Constructor is called automatically when object is created.
+    -Its execute only once per an Object.
+    -It is up 2 type :
+        1. Default Constructor
+        2. Parameterised Constructor
+
+6.                Constructor                                     Method            
+                 ______________                                  ___________
+        1. Same name as class.                 |            1. Same/different name as class.
+        2. It is called when object is         |            2. It is called when we call it .
+            created.                           | 
+        3. It is called when once per an       |            3. It is called many time per an
+            object.                            |                object.
+
+7.         Default Constructor                                   Parameterised Constructor            
+          _____________________                                  _________________________
+        1. Constructor without parameter.      |            1. Constructor with parameter.
+        2. It is called when object is         |            2. It is called when object is 
+            created without parameter.         |                created with parameter
+
+8. Constructor Overloading :-
+        Constructor with same name and different parameter.
+
+9. Method :
+    Method is a block that contain logic of code it have two part
+    one is header and another is body.
+
+10. Static Method  :
+    -Static method belongs to the class rather than any instance of the class.
+    -Static method don't act on the instance variable of that class.
+    -Static method is declared with "static" keyword.
+    -Static method is called without using object of that class but by 
+    directly by mathod name <or> by the classname.methodname() .
+
+    EX :- 
+        public class MathUtil {
+    // Static method to calculate the square of a number
+    public static int square(int number) {
+        return number * number;
+    }
+
+    // Static method to calculate the cube of a number
+    public static int cube(int number) {
+        return number * number * number;
+    }
+
+    // Main method to test the static methods
+    public static void main(String[] args) {
+        int number = 5;
+
+        // Calling static methods using the class name
+        int squareResult = MathUtil.square(number);
+        int cubeResult = MathUtil.cube(number);
+
+        // Printing the results
+        System.out.println("Square of " + number + " is: " + squareResult);
+        System.out.println("Cube of " + number + " is: " + cubeResult);
+    }
+}
+
+11. Why static method can't act upon instance variable ?
+    JVM first execute the static methods and after that it create object since 
+    object not created at the time of calling static method so instance variable 
+    are not available at that time.
+
+12.
+                Static variable                                     Instance varibale           
+                 ______________                                  ___________
+        1. Variable is declared using          |            1. Variable is declared without
+            'static' keyword                   |                any keyword.
+        2. We can access it by class name      |            2. we can access it by using object. 
+        3. static/non static method can        |            3. non static method can access it.  
+            access it.                         |                
+
+NOTE :- 
+        A static method cannot directly access instance variables because static methods belong
+    to the class itself, not to any particular instance of the class. However, static methods
+    can access instance variables if they are provided with an instance of the class.
+
+        Example:-
+                public class Person {
+                // Instance variables
+                private String name;
+                private int age;
+
+                // Constructor to initialize instance variables
+                public Person(String name, int age) {
+                    this.name = name;
+                    this.age = age;
+                }
+
+                // Non-static method to display instance variables
+                public void displayInfo() {
+                    System.out.println("Name: " + name);
+                    System.out.println("Age: " + age);
+                }
+
+                // Static method to display instance variables using an instance reference
+                public static void displayPersonInfo(Person person) {
+                // Accessing instance variables via the instance reference
+                    System.out.println("Name: " + person.name);
+                    System.out.println("Age: " + person.age);
+                }
+
+                public static void main(String[] args) {
+                    // Creating an instance of the Person class
+                        Person person = new Person("Alice", 30);
+
+                        // Calling non-static method
+                     person.displayInfo();
+
+                    // Calling static method with an instance reference
+                    Person.displayPersonInfo(person);
+                    }
+                }    
+
+13. Local Variable :
+        -Variable that is declared inside the method or constructor.
+        -It can only be accessible inside the method.
+
+    Ex :- 
+            public class LocalVariableExample {
+    public void displayMessage() {
+        // Local variable declaration
+        String message = "Hello, this is a local variable!";
+        
+        // Using the local variable
+        System.out.println(message);
+    }
+
+    public static void main(String[] args) {
+        // Creating an instance of the LocalVariableExample class
+        LocalVariableExample example = new LocalVariableExample();
+        
+        // Calling the method that uses a local variable
+        example.displayMessage();
+    }
+}
+
+14. Static block :-
+        static block is declared using "static" keyword.
+        JVM is execute static block with first priority rather than main().
+
+    EX :- 
+            class Main{
+                static{
+                System.out.println("1. static block");
+            }
+                public static void main(String args[]){
+                    System.out.println("2. main method");
+                }
+            }
+
+        o/p  :  1. static block
+                2. main method
+
+ NOTE :-    
+        static block runs without the main method.
+            (It is possible to run java program without main())
+                class Main{
+                    static{
+                        System.out.println("Hello");
+                    }
+                }
+            o/p : Hello
+                    main() not found.
+
+15. is java program run without main() ?
+        YES, It is possible to run java program without main().
+
+        Class Main{
+            static{
+                System.out.println("Hello");
+                System.exit(0);
+            }
+        }
+        o/p : Hello
+
+16. "this" - keyword in java ?
+    Mainly this keyword used to remove confusion between class attribute and 
+  parameter that have same name.
+    it is a reference variable used to refer the object of current class.
+    
+    it is used to refer current class -------|------instance variable
+                                             |-------Method
+                                             |-------Constructor 
+
+17. Instance Method :
+        Method which is act upon instance variable.
+            it can be called by objectname.methodname().
+
+18. Factory Method: 
+        Method taht create and return object to that class to which it belongs.
+
+        class Main{
+            public static void main(String args[]){
+                    double t = 5.5;
+                    double a = Math.PI*t*t;
+                    System.out.println(a);
+                }
+        }
+
+19. Inner class : 
+        1. Class that is written inside a class.
+        2. It can access private member of outer class.
+        3. Object of inner class can only be created inside
+            outer class.
+        4. increase encapsulation, and can lead to more readable and maintainable code.
+
+        1. Member Inner Class
+
+    Member inner class:
+        is defined within another class and behaves like an instance member of
+        the outer class.
+
+        public class OuterClass {
+    private String outerField = "Outer field";
+
+    // Member Inner Class
+    public class InnerClass {
+        public void display() {
+            System.out.println("Accessing: " + outerField);
+        }
+    }
+
+    public static void main(String[] args) {
+        OuterClass outer = new OuterClass();
+        OuterClass.InnerClass inner = outer.new InnerClass();
+        inner.display();
+    }
+}
+
+    Static nested class:
+    is a static class defined inside another class. It does not have access to instance
+    variables of the outer class.
+
+    public class OuterClass {
+    private static String staticOuterField = "Static Outer Field";
+
+    // Static Nested Class
+    public static class StaticNestedClass {
+        public void display() {
+            System.out.println("Accessing: " + staticOuterField);
+        }
+    }
+
+    public static void main(String[] args) {
+        OuterClass.StaticNestedClass nested = new OuterClass.StaticNestedClass();
+        nested.display();
+    }
+}
+
+    Local inner class :
+        is defined within a block, typically within a method.
+
+            public class OuterClass {
+    public void outerMethod() {
+        final String localVariable = "Local Variable";
+
+        // Local Inner Class
+        class LocalInnerClass {
+            public void display() {
+                System.out.println("Accessing: " + localVariable);
+            }
+        }
+
+        LocalInnerClass localInner = new LocalInnerClass();
+        localInner.display();
+    }
+
+    public static void main(String[] args) {
+        OuterClass outer = new OuterClass();
+        outer.outerMethod();
+    }
+}
+
+
+    Anonymous inner class is an inner class without a name and is used 
+    for instantiating objects with certain "extras," such as method 
+    implementations.
+
+        interface Greeting {
+    void sayHello();
+}
+
+public class OuterClass {
+    public void greet() {
+        // Anonymous Inner Class
+        Greeting greeting = new Greeting() {
+            @Override
+            public void sayHello() {
+                System.out.println("Hello from Anonymous Inner Class");
+            }
+        };
+
+        greeting.sayHello();
+    }
+
+    public static void main(String[] args) {
+        OuterClass outer = new OuterClass();
+        outer.greet();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
