@@ -1,0 +1,68 @@
+EXAMPLE in Java that includes classes demonstrating encapsulation, inheritance, polymorphism, and abstraction:
+
+  // Abstract class with abstraction and inheritance
+abstract class Animal {
+    protected String name;
+
+    // Constructor for Animal class
+    public Animal(String name) {
+        this.name = name;
+    }
+
+    // Abstract method for polymorphism
+    public abstract void makeSound();
+
+    // Encapsulated method
+    public String getName() {
+        return name;
+    }
+}
+
+// Inherited class implementing abstraction and polymorphism
+class Dog extends Animal {
+    // Constructor for Dog class
+    public Dog(String name) {
+        super(name); // Calling superclass constructor
+    }
+
+    // Overridden method for polymorphism
+    @Override
+    public void makeSound() {
+        System.out.println("Dog " + name + " says: Woof!");
+    }
+}
+
+// Another inherited class demonstrating polymorphism
+class Cat extends Animal {
+    // Constructor for Cat class
+    public Cat(String name) {
+        super(name); // Calling superclass constructor
+    }
+
+    // Overridden method for polymorphism
+    @Override
+    public void makeSound() {
+        System.out.println("Cat " + name + " says: Meow!");
+    }
+}
+
+// Main class to demonstrate the example
+public class Example {
+    public static void main(String[] args) {
+        // Creating instances of Dog and Cat
+        Animal dog = new Dog("Buddy");
+        Animal cat = new Cat("Whiskers");
+
+        // Calling encapsulated method and demonstrating polymorphism
+        System.out.println("Name of the dog: " + dog.getName());
+        dog.makeSound(); // Polymorphic method call
+        System.out.println("Name of the cat: " + cat.getName());
+        cat.makeSound(); // Polymorphic method call
+    }
+}
+
+
+o/p : Name of the dog: Buddy
+Dog Buddy says: Woof!
+Name of the cat: Whiskers
+Cat Whiskers says: Meow!
