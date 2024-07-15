@@ -1,0 +1,88 @@
+1. Define Encapsulation .
+      Encapsulation is a mechanism that binds class member variable and method
+  together.
+      Inside a class, we write method and variable.so here class perform 
+  the encapsulation mechism which binds method and variable.
+    if we declare variable as private and method as public we can only 
+  access varibale by the method from outside the class.so, Encapsulation 
+  protect inner implementation of the member of class.
+
+  feature:
+        Data hiding , security.
+
+2. How we can achieve Encapsulation ?
+  i. Declare the variable as private.
+  ii.provide getters and setters for variable.<or> make method public .
+
+Note :  getter is public bettre than private .setter is private  better than public.
+
+3. How To make a class immutable ?
+  a. Declare class as final.
+  b. Make class all field private / final .
+  c. Don't provide setter method / make it private.
+|--------------------------------------------------------------------------------|
+|  // Final class                                                                | 
+| final class FinalClass {                                                       |
+|    // Fields and methods                                                       |
+| }                                                                              |
+|                                                                                | 
+| // This will cause a compile-time error because FinalClass cannot be extended  | 
+| // class SubClass extends FinalClass {                                         | 
+|      // Fields and methods                                                     |
+| // }                                                                           |
+|------------------------------------------------------------------------------- |
+
+4. Example using coding.
+
+    public class Person {
+    private String name;
+    private int age;
+
+    // Constructor to initialize the Person object
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Getter method for name
+    public String getName() {
+        return name;
+    }
+
+    // Setter method for name
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Getter method for age
+    public int getAge() {
+        return age;
+    }
+
+    // Setter method for age with validation
+    public void setAge(int age) {
+        if (age > 0) {
+            this.age = age;
+        } else {
+            System.out.println("Age must be positive.");
+        }
+    }
+
+    public static void main(String[] args) {
+        // Create a new Person object
+        Person person = new Person("Alice", 30);
+
+        // Access and modify the object's state using getters and setters
+        System.out.println("Name: " + person.getName());
+        System.out.println("Age: " + person.getAge());
+
+        // Modify the object's state using setters
+        person.setName("Bob");
+        person.setAge(-5); // Will print "Age must be positive."
+
+        // Display the updated state
+        System.out.println("Updated Name: " + person.getName());
+        System.out.println("Updated Age: " + person.getAge());
+    }
+}
+
