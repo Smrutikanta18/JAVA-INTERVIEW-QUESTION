@@ -1,0 +1,32 @@
+1. Define Polymorphism.
+  Ability to exists in more than one form.
+  Example : A person can be a doctor, father, teacher
+          Husband etc.
+  It increases code flexibility. we can use one method
+  for defferent operation.
+
+2. How we can achieve polymorphism ?
+  we can achieve polymorphism in two ways
+    i. Runtime / Dynamic Polymorphism :
+          Which is execute as runtime and achieved by Method
+        overriding.
+    ii. compile / Static Polymorphism :
+          Which is execute as compiletime and achieved by
+        Method / Constructor overloading.
+
+3. Difference between Method Overloading and overriding.
+    METHOD OVERLOADING : 
+          - Two/More Method with same name and same parameter
+          and same return type.
+          - For method overloading there must be a IS-A 
+          relationship.
+          - Used to achieve runtime polymorphism.
+    METHOD OVERRIDING : 
+          - Two/More Method with same name but different parameter
+          and same/different return type.
+          - For method overloading there must be a IS-A 
+          relationship.
+          - Used to achieve runtime polymorphism.
+        
+          
+          
