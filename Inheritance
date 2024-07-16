@@ -1,1 +1,354 @@
+1. Define Inheritance :
+      In inheritance a new class derived from an existing class such that new class
+  contain all the properties of existing class and also contains its new property.
+  - it provide code reusability.
+  - it represent IS-A relationship.
+  - Java does not support Multiple Inheritance(because it creates ambiguity).
+  - Using "extends" keyword we can achieve inheritance.
+
+EXAMPLE :-
+  // Superclass (Base Class)
+class Animal {
+    protected String name;
+
+    // Constructor for Animal class
+    public Animal(String name) {
+        this.name = name;
+    }
+
+    // Method to display the animal's name
+    public void displayInfo() {
+        System.out.println("Animal Name: " + name);
+    }
+
+    // Method to make a sound (to be overridden by subclasses)
+    public void makeSound() {
+        System.out.println("Animal makes a sound.");
+    }
+}
+
+// Subclass (Derived Class)
+class Dog extends Animal {
+    // Constructor for Dog class
+    public Dog(String name) {
+        super(name); // Calling the constructor of the superclass
+    }
+
+    // Overriding the makeSound method
+    @Override
+    public void makeSound() {
+        System.out.println("Dog " + name + " says: Woof!");
+    }
+}
+
+// Another Subclass (Derived Class)
+class Cat extends Animal {
+    // Constructor for Cat class
+    public Cat(String name) {
+        super(name); // Calling the constructor of the superclass
+    }
+
+    // Overriding the makeSound method
+    @Override
+    public void makeSound() {
+        System.out.println("Cat " + name + " says: Meow!");
+    }
+}
+
+// Main class to demonstrate inheritance
+public class InheritanceExample {
+    public static void main(String[] args) {
+        // Creating instances of Dog and Cat
+        Animal dog = new Dog("Buddy");
+        Animal cat = new Cat("Whiskers");
+
+        // Calling methods on the instances
+        dog.displayInfo(); // Inherited method
+        dog.makeSound();   // Overridden method
+        cat.displayInfo(); // Inherited method
+        cat.makeSound();   // Overridden method
+    }
+}
+
+
+
+2. Protected specifier in inheritance :-
+      Private member in parent class can't be accessible by child class.
+  so, Inplace of private we use Protected so that it can accessible by
+  the child class.
+
+
+
+3. Types of Inheritance :
+    Mainly THREE type :-
+      
+    a. Single inheritance
+        a subclass inherits from only one superclass.
+CODE:    A
+         ^
+         |
+         |
+         B
+
+        class Animal {
+    void eat() {
+        System.out.println("Eating...");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Barking...");
+    }
+}
+
+public class TestSingleInheritance {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.eat();
+        dog.bark();
+    }
+}
+
+  b. Multilevel Inheritance
+      a class is derived from another class, which is also derived from another class,
+  forming a chain of inheritance.
+CODE:    A
+         ^
+         |
+         |
+         B
+         ^
+         |
+         |
+         C
+  class Animal {
+    void eat() {
+        System.out.println("Eating...");
+    }
+}
+
+class Mammal extends Animal {
+    void walk() {
+        System.out.println("Walking...");
+    }
+}
+
+class Dog extends Mammal {
+    void bark() {
+        System.out.println("Barking...");
+    }
+}
+
+public class TestMultilevelInheritance {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.eat();
+        dog.walk();
+        dog.bark();
+    }
+}
+
+  c. Hierarchical Inheritance
+      multiple subclasses inherit from a single superclass.
+CODE:     A
+          ^
+         / \
+        /    \
+      B       C
+  class Animal {
+    void eat() {
+        System.out.println("Eating...");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Barking...");
+    }
+}
+
+class Cat extends Animal {
+    void meow() {
+        System.out.println("Meowing...");
+    }
+}
+
+public class TestHierarchicalInheritance {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.eat();
+        dog.bark();
+
+        Cat cat = new Cat();
+        cat.eat();
+        cat.meow();
+    }
+}
+
+4. Facts of Inheritance:
+  a. There is only be one superclass in inheritance, but one superclass 
+  can have many subclasses.
+  b. Constructor can not be inherited by subclass, They can only be 
+  invoked using "super"-keyword.
+  c. subclass can not inherits the private member of parent class.
+
+5. Constructor in Inheritance :
+    i. Constructor of Superclass can't be inherited by the 
+      subclass.
+    ii. When a superclass is extended by the subclass the 
+      constructor of the superclass execute first followed by
+      constructor of subclass.
+    iii. Default constructor of superclass automatically called
+        when we call default constructor of subclass.
+    iv. If we want to call the parameterised constructor of 
+      parent class then we have to use "super" keyword.
+
+6. Super - Keyword :
+    i. Super keyword is a reference variable used to refer the 
+      immediate superclass.
+    ii. Used to refer the immediate superclass instance variable.
+    iii. It can be used to call superclass constructors and methods.
+
+CODE : 
+        class Animal {
+    protected String name;
+
+    // No-argument constructor
+    public Animal() {
+        System.out.println("Animal created");
+    }
+
+    // Parameterized constructor
+    public Animal(String name) {
+        this.name = name;
+        System.out.println("Animal named " + name + " created");
+    }
+}
+class Dog extends Animal {
+    private String breed;
+
+    // No-argument constructor
+    public Dog() {
+        // Explicit call to superclass no-argument constructor
+        super();
+        System.out.println("Dog created");
+    }
+
+    // Parameterized constructor
+    public Dog(String name, String breed) {
+        // Explicit call to superclass parameterized constructor
+        super(name);
+        this.breed = breed;
+        System.out.println("Dog of breed " + breed + " created");
+    }
+}
+public class TestConstructors {
+    public static void main(String[] args) {
+        // Creating an instance of Dog using no-argument constructor
+        Dog dog1 = new Dog();
+
+        // Creating an instance of Dog using parameterized constructor
+        Dog dog2 = new Dog("Buddy", "Golden Retriever");
+    }
+}
+
+o/p : Animal created
+Dog created
+Animal named Buddy created
+Dog of breed Golden Retriever created
+
+
+7. FINAL - KEYWORD : 
+    This "final" keyword used to restrict the user.
+    it stops users to 
+                  a. variable value change.
+                  b. Method overriding.
+                  c. Inheritance
+  NOTE : final method can be inherited but can not overriden.
+
+final variable: 
+    public class FinalVariableExample {
+    final int CONSTANT_VALUE = 100;
+    
+    public void showValue() {
+        System.out.println("The constant value is: " + CONSTANT_VALUE);
+    }
+
+    public static void main(String[] args) {
+        FinalVariableExample example = new FinalVariableExample();
+        example.showValue();
+    }
+}
+
+
+final method : 
+    class SuperClass {
+    final void display() {
+        System.out.println("This is a final method.");
+    }
+}
+
+class SubClass extends SuperClass {
+    // The following method would cause a compile-time error
+    // because the display method in the superclass is final.
+    // void display() {
+    //     System.out.println("Cannot override this method.");
+    // }
+}
+
+public class FinalMethodExample {
+    public static void main(String[] args) {
+        SubClass obj = new SubClass();
+        obj.display();
+    }
+}
+
+final class :
+ final class FinalClass {
+    void display() {
+        System.out.println("This is a final class.");
+    }
+}
+
+// The following class would cause a compile-time error
+// because FinalClass is declared as final and cannot be subclassed.
+// class SubClass extends FinalClass {
+//     void show() {
+//         System.out.println("Cannot inherit from final class.");
+//     }
+// }
+
+public class FinalClassExample {
+    public static void main(String[] args) {
+        FinalClass obj = new FinalClass();
+        obj.display();
+    }
+}
+
+SUMMERY : 
+Final Variables: Values cannot be changed once initialized.
+Final Methods: Cannot be overridden by subclasses.
+Final Classes: Cannot be subclassed, preventing inheritance.
+
+8. BLANK / UNINITIALIZED FINAL VARIABLE :
+   i. final variable that is not declared at the time of 
+    its declaration .
+  ii. It can only initialized by constructor.
+
+      class Test{
+          final int i;
+            Test(int i){
+              this.i=i;
+            }
+      }
+      class Main{
+        public static void main(String args[]){
+          Test t = new Test(5);
+          System.out.println(t.i);
+        }
+      }
+
+
+
 
