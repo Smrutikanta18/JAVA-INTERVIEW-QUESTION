@@ -1,0 +1,74 @@
+1. Define Abstraction.
+    Process of hiding the implementation part and showing only 
+  the functional part to the user.
+
+2. How we can achieve abstraction ?
+    By two ways 
+              i. abstract class
+              ii. Interface
+
+3. Between abstract class and interface which give 100% abstraction ?
+    An abstract class can have both abstract methods (methods without a body) 
+  and concrete methods (methods with a body). Therefore, it doesn't provide 
+  100% abstraction.
+
+CODE :
+    abstract class Animal {
+    // Abstract method (does not have a body)
+    public abstract void makeSound();
+    
+    // Concrete method
+    public void eat() {
+        System.out.println("This animal is eating.");
+    }
+}
+
+class Dog extends Animal {
+    public void makeSound() {
+        System.out.println("Woof");
+    }
+}
+
+
+    Interface provides 100% abstraction because it can only have abstract methods
+  (and constants). It cannot have any concrete methods, except for static and 
+  default methods introduced in Java 8.
+
+CODE :
+  interface Animal {
+    // Abstract method (implicitly public and abstract)
+    void makeSound();
+}
+
+class Dog implements Animal {
+    public void makeSound() {
+        System.out.println("Woof");
+    }
+}
+
+4. Abstract Class :
+    -> class which is declared with "abstract" keyword.
+      Abstract class contains zero/many abstract method.
+      and also contains concrete method.
+    -> abstract method is method without body it have only header.
+    -> object of abstract method can't be created because abstact class
+    contains abstact method which does not conatin body so JVM can't allocate 
+    memory for abstract method.
+    -> so, we extends abstract class by a class and by using this class object 
+    we can use abstract class.
+    -> class that extends abstract class must be implements the abstact method 
+    that present in abstract class in this class. otherwise, again this class declared 
+    as abstract.
+    -> concrete methods of an abstract class can be overridden or overloaded in the 
+    extended (subclass) class.
+    -> Yes, an abstract class in Java can extend another abstract class. 
+    When an abstract class extends another abstract class, it inherits the abstract 
+    methods from the superclass. The subclass, which can be another abstract class or 
+    a concrete class, must provide implementations for the inherited abstract methods
+    unless it chooses to remain abstract itself.
+      But if its is private / sealed then it can't extended.
+    -> We can decared a class as both abstract and private/final 
+      because it can't be extended.
+    
+
+  
