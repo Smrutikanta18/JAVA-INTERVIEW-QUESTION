@@ -69,6 +69,179 @@ class Dog implements Animal {
       But if its is private / sealed then it can't extended.
     -> We can decared a class as both abstract and private/final 
       because it can't be extended.
-    
+
+  Exxample:
+        // Define an abstract class
+abstract class Animal {
+
+    // Abstract method (does not have a body)
+    abstract void makeSound();
+
+    // Regular method
+    void move() {
+        System.out.println("Moving");
+    }
+}
+
+// Define a subclass that extends the abstract class
+class Dog extends Animal {
+
+    // Provide implementation for the abstract method
+    @Override
+    void makeSound() {
+        System.out.println("Woof!");
+    }
+}
+
+// Define another subclass that extends the abstract class
+class Cat extends Animal {
+
+    // Provide implementation for the abstract method
+    @Override
+    void makeSound() {
+        System.out.println("Meow!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create instances of the concrete subclasses
+        Animal dog = new Dog();
+        Animal cat = new Cat();
+
+        // Call methods on the instances
+        dog.makeSound();  // Output: Woof!
+        dog.move();       // Output: Moving
+
+        cat.makeSound();  // Output: Meow!
+        cat.move();       // Output: Moving
+
+        // The following line would raise a compilation error because you cannot instantiate an abstract class
+        // Animal animal = new Animal();
+    }
+}
+
+        
+
+5. Interface :
+        Interface always contains a abstract method and interface 
+    declared by using "interface" - keyword.
+        All the method of interface is by default public and 
+    abstarct and all the variavle is public,static and final.
+        We can't create the object of the interface and we can 
+    reference variable of it and we use an implemantation class
+    to implenments the interface using "implements" - keyword.
+    and object of this implementation class is use to access the 
+    interface.
+        Non of the method is private, protected and protected.
+        An interface can extends an other interface but can not 
+    implements the other interface.
+        A class implements a interface but can't extends the 
+    interface.
+        An interface can't contain constructor.
+        Class that implements interface must implements all the 
+    abstract method of that interface.
+
+Example:
+    // Define an interface
+interface Animal {
+    // Abstract method (does not have a body)
+    void makeSound();
+
+    // Default method
+    default void move() {
+        System.out.println("Moving");
+    }
+}
+
+// Define a class that implements the interface
+class Dog implements Animal {
+
+    // Provide implementation for the abstract method
+    @Override
+    public void makeSound() {
+        System.out.println("Woof!");
+    }
+}
+
+// Define another class that implements the interface
+class Cat implements Animal {
+
+    // Provide implementation for the abstract method
+    @Override
+    public void makeSound() {
+        System.out.println("Meow!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create instances of the classes that implement the interface
+        Animal dog = new Dog();
+        Animal cat = new Cat();
+
+        // Call methods on the instances
+        dog.makeSound();  // Output: Woof!
+        dog.move();       // Output: Moving
+
+        cat.makeSound();  // Output: Meow!
+        cat.move();       // Output: Moving
+    }
+}
+
+
+6. Why we use interface ?
+    To achieve abstraction
+    To achieve Multiple inheritance
+    To achieve Loose coupling
+
+7. Multiple inheritance is not supported through class in java,but
+   it is possible by an interface.
+        In java, There is some ambiguity in inheritance to achieve multuple 
+    inheritance but in interface implemation is provided in implementation 
+    class. so one Class can implemets Many interface.
+
+Example:
+    // Define the first interface
+interface Animal {
+    void makeSound();
+}
+
+// Define the second interface
+interface Swimmer {
+    void swim();
+}
+
+// Define a class that implements both interfaces
+class Dolphin implements Animal, Swimmer {
+
+    // Provide implementation for the method from Animal interface
+    @Override
+    public void makeSound() {
+        System.out.println("Echolocation sound");
+    }
+
+    // Provide implementation for the method from Swimmer interface
+    @Override
+    public void swim() {
+        System.out.println("Swimming in the ocean");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create an instance of Dolphin
+        Dolphin dolphin = new Dolphin();
+
+        // Call methods from both interfaces
+        dolphin.makeSound();  // Output: Echolocation sound
+        dolphin.swim();       // Output: Swimming in the ocean
+    }
+}
+
+8. Marker / Tagged Inteface:
+    interface which has no data member.
+        Serializable 
+        clonable
 
   
