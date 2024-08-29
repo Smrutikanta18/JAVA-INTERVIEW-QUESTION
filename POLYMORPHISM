@@ -16,17 +16,114 @@
 
 3. Difference between Method Overloading and overriding.
     METHOD OVERLOADING : 
-          - Two/More Method with same name and same parameter
+          - Two/More Method with same name and different parameter
+          and same <or> different return type.
+          - For method overloading there is no IS-A 
+          relationship required it can be done in same class.
+          - Used to achieve compile polymorphism.
+    METHOD OVERRIDING : 
+          - Two/More Method with same name but same parameter
           and same return type.
           - For method overloading there must be a IS-A 
           relationship.
           - Used to achieve runtime polymorphism.
-    METHOD OVERRIDING : 
-          - Two/More Method with same name but different parameter
-          and same/different return type.
-          - For method overloading there must be a IS-A 
-          relationship.
-          - Used to achieve runtime polymorphism.
+
+4. Dynamic method dispatch :
+    This is the technique in which Suberclass reference variable
+  used to refer the object of subclass.
+
+Example :
+  // Base class
+class Animal {
+    // Method to be overridden
+    void makeSound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+// Derived class 1
+class Dog extends Animal {
+    // Overriding the makeSound method
+    @Override
+    void makeSound() {
+        System.out.println("Dog barks");
+    }
+}
+
+// Derived class 2
+class Cat extends Animal {
+    // Overriding the makeSound method
+    @Override
+    void makeSound() {
+        System.out.println("Cat meows");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating instances of the derived classes
+        Animal myDog = new Dog();
+        Animal myCat = new Cat();
+        
+        // Dynamic method dispatch: the method that gets 
+          called is determined at runtime
+        myDog.makeSound(); // Output: Dog barks
+        myCat.makeSound(); // Output: Cat meows
+    }
+}
+
+
+* After dynamic dispatch, only the overriden method of subclass
+  and all the method of superclass can called.But, it give 
+  output of overriden method of subclass.
+  And method that is not overriden method in subclass 
+  cannot be called.
+
+  class Dynamic{
+    void make(){
+        System.out.println("Dynamic value");
+    }
+}
+class sub extends Dynamic{
+    @Override
+    void make(){
+        System.out.println("sub value");
+    }
+    
+    /*This methos cannot be called 
+    it is not ovverriden*/
+    void view(){
+        System.out.println("sub view");
+    }
+}
+class Main2{
+    public static void main(String[] args) {
+        Dynamic d= new sub();
+        d.make();
+       // d.view(); Give compilation error.
+    }
+}
+
+* In case of Static method it give the 
+output of superclass(
+because static method cann't be overriden , static method
+belongs to class not to object.
+)
+
+5. Polymorphism with Private method :
+    Private method can't be override it can overloaded
+  due to they are not accessible by subclass.
+  Final method also can't be override.
+
+6. Object class :
+    object class is superclass of all classes in java.
+  which is build in class in java of java.lang package.
+      it contain some static methods 
+            - toString()
+            - hashCode()
+            - equals()
+            - notify()
+      
         
           
           
