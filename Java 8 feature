@@ -1,0 +1,225 @@
+                        1. STREAM API
+                      `````````````````
+1. Stream API is used to perform operation or process the group of object.
+    It is related to the Collection Framework.
+2. STREAM API VS IOSTREAM
+        Stream API basically used to perform operation on collection 
+          or on a group of data.
+       IOStream is baically a sequence of data that is used to perform 
+          read and write operation.
+
+    java create 3 stream automatically --
+                                      System.out
+                                      System.in
+                                      System.error
+        System.out: it is used to print the output.
+                    method conatin: print()
+                                    println()
+        System.in: it is used to read input from input stream.
+                    it is use to take input from keyboard 
+                  in Scanner class object.
+        system.error: used to print error.
+
+3. CHARACTERISTICS AND FEATURE OF STREAM API 
+      i. Provide immutable operation :
+            It does not change the source data. It only use 
+          source data create a new stream and also return a
+          new stream and does not affect the source data.
+
+          EX: 
+            List<Integer> l = Arrays.ofList(1,2,3,4,5);
+            List<Integer> s= l.stream()
+                                    .map(n -> n * 2)
+                                    .collect(Collectors.toList());
+            s.o.p(l);
+            s.o.p(s);
+
+      ii. They donot perform operation util a terminate operation 
+          method it not called.
+
+      iii. It uses lambda Expression and functional interface to 
+          to make code readable.
+          EX:
+            l.stream()
+                    .map(n->n*2)
+                    .forEach(s -> s.o.p(s));
+
+      iv. Once a stream is consumed then it canot be used again.
+
+      v.Stream operation can be chained together so that one method
+        output is used as the another method input.
+        EX: 
+          l.stream()
+                  .filter(n -> n%2 == 0)
+                  .map(n -> n*2)
+                  .sorted()
+                  .forEach(System.out::println);
+
+      vi. It provide the special stream for primitive datatype
+            IntStream, LongStream etc.
+            IntStream is = IntStream.range(1,10);
+            int sum = is.sum();
+
+4. OPERATION ON STREAM
+    There is only to type of operation in stream API
+        i. Intermidiate Operation
+       ii. Terminate Operation 
+
+Intermidiate Operation :
+    Operation in which the multiple operation are chained together
+    in a row called Intermidiate Operation.
+
+    Characteristic:
+      i. In this multiple operation are chained together and one operation 
+        output is used as the input of another operation.
+      ii. This operation transfer a stream into another stream.
+
+    Methods:
+    i. map() :
+          This stream method used to transfer each element of 
+        the stream.
+          it take a FUnction that is Functional interface as 
+          parameter.
+          it return a new stream consisting of the result of the applying 
+          operation/function on the existing stream element.
+
+        EX:
+            List<Integer> l = Arrays.ofList(1,2,3,4,5);
+            List<Integer> s= l.stream()
+                                    .map(n -> n * 2)
+                                    .collect(Collectors.toList());
+            s.o.p(l);
+            s.o.p(s);
+
+    ii. filter() :
+          It is the stream method that filter the element based on the condition.
+        cretae a new stream containing only the satified element from that stream.
+
+        EX:
+            List<Integer> l = Arrays.ofList(1,2,3,4,5);
+            l.stream()
+                    .filter(n -> n % 2 != 0)
+                    .forEach(System.out::println);
+            s.o.p(l);
+
+     iii. sorted() :
+            This stream method is used to sort the element of the stream
+          and return a sorted stream.
+
+     iv. limit(Long l) : Limit the stream to the l.
+      v. distinct() : Remove the duplicate element from the stream.
+     vi.skip(Long n): TO skip the first n element from the stream.
+
+Terminate Operation
+    Operation that return the final result of the stream operation
+  is called Terminate operation.
+
+methods: 
+    i. collect() :
+            it return the result stream.
+            EX:
+            List<Integer> l = Arrays.ofList(1,2,3,4,5);
+            List<Integer> s= l.stream()
+                                    .map(n -> n * 2)
+                                    .collect(Collectors.toList());
+            s.o.p(l);
+            s.o.p(s);
+    ii. forEach() :  
+              it retrive all the element of steam and 
+            print it.
+            EX:
+             List<Integer> l = Arrays.ofList(1,2,3,4,5);
+            l.stream()
+                    .filter(n -> n % 2 != 0)
+                    .forEach(System.out::println);
+            
+    iii. count() : 
+                it count the number of element present in stream.
+    iv. findFirst() :
+                Return the first element of the stream.
+                  EX:
+                   List<Integer> l = Arrays.ofList(1,2,3,4,5);
+                 Inetegr i = l.stream()
+                    .map(n -> n * 2 )
+                    .findFirst();
+             s.o.p(i);
+    v. findAny() :
+              Return the any element of the stream.
+                EX:
+                   List<Integer> l = Arrays.ofList(1,2,3,4,5);
+                 Inetegr i = l.stream()
+                    .map(n -> n * 2 )
+                    .findAny();
+              s.o.p(i);
+    vi. max() :
+            find maximun element according to comparator.
+    vii. min() :
+            find maximun element according to comparator.
+    viii. anyMatch() :
+            Return true if any element satisfy the condition.
+              EX:
+                boolean b = stream.anyMatch(n -> n%2 ==0);
+    ix. allMatch() :
+            Return true if all element satisfy the condition.
+            EX:
+                boolean b = stream.allMatch(n -> n%2 ==0);
+    x. nonMatch() :
+           Return true if no one element satisfy the condition.
+            EX:
+                boolean b = stream.nonMatch(n -> n%2 ==0);
+    xi. reduce() :
+              Reduce the element of stream to single value
+            EX: 
+              int add = l.stream()
+                                .filter(n -> n%2 ==0)
+                                .reduce(0,(a,i)->a+i);
+
+
+
+
+
+
+
+                                          
+
+
+          
+                        2. Optional class
+                      ``````````````````````
+1. Optional is a class that present in package java.util.
+    Basically, Optional class is container object that may or may not contain
+  null value.
+    Primary purpose of Optional class is to reducing the risk of
+    nullPointerException and provide more expressive way to handle null value.
+
+2. CHARACTERISTICS AND FEATURES
+    i. Nullable container : Optional class is generic type that hold value of 
+      type T or indicate that no value is present.
+    ii. it reduce risk of NullPointerException.
+    iii. Optional object are immutable one created.
+    iv. It support operation like map(),filter(),flatMap() to process the 
+        value.
+
+3. CREATING OPTIONAL CLASS OBJECT
+    i. Creating with a non-null value.
+        Optional<String> o = Optional.of("smruti");
+    ii. Creating Optional with a null value.
+         Optional<String> o = Optional.ofNullable(null);
+    iii. Creating empty Optional.
+            Optional<String> o = Optional.empty();
+
+      EX:
+          class Main{
+            public static void main(String args[]){
+                String str = "Hello";
+                Optional<String> o = Optional.of(str);
+                String s = o.get();
+                s.o.p(s);
+            }
+          }
+
+4.BASIC OPERATION ON OPTIONAL
+    i.Getting value :
+          get() : To retrive data from the 
+
+  
