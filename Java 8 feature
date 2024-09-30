@@ -219,7 +219,209 @@ methods:
           }
 
 4.BASIC OPERATION ON OPTIONAL
-    i.Getting value :
-          get() : To retrive data from the 
+      i.Getting value :
+          get() : To retrive data from the Optional object if value
+                 id not present it will throw NoSuchElementException 
 
+            EX:
+                Optional<String> optional = Optional.of("Hello");
+                  String str = optional.get();
+                    s.o.p(str);
+
+      ii. isPresent() : 
+            This method of optional gives a boolean value if 
+        value present true otherwise false.
+          Basically,Check value is present or not.
+      EX:
+          Optional o = Optional.ofNullable("Hello");
+            if(o.isPresent()){
+              String str = o.get();
+            }
+            s.o.p(str);
+
+      iii. orElse() :
+              Handeling the absence of value.
+              If value is not present then it will give a default value.
+            EX:
+                Optional<String> optional = Optional.empty();
+                  String str = optional.orElse("Hello");
+                    s.o.p(str);
+      
+      iv. orElseGet() :
+                      To lazily get default value if optional is empty.
+
+      v. orElseThrow() :
+                  Used to throws the Exception
+              EX:
+                  Optional<String> optional = Optional.empty();
+                  String str = optional.orElseThrow(
+                    () ->  new NoSuchElementException("No Element There"); 
+                  );
+
+5. FUNCTIONAL OPERATION ON OPTIONAL 
+      I. filter() :
+            It will give value if satisfy the condition.
+            EX:
+                  Optional<String> optional = Optional.of("smruti");
+                  Optional<String> str = optional.filter(s -> s.length >= 5);
+      II. map() :
+            Transfer the value if it present.
+            EX:
+
+                  Optional<String> optional = Optional.of("smruti");
+                  Optional<Integer> l = optional.map(s -> s.length);
+      III. flatMap() : 
+                Extension of map it transfer the value and unwrap 
+            optional value.
+            EX:
+                  Optional<String> optional = Optional.of("smruti");
+                  Optional<Integer> l = optional.flatMAp(s ->Optional.of(s.length));
+
+
+
+
+
+                          FUNCTIONAL INTERFACE
+                         ```````````````````````
+1. Interface which have only one abstract method.
+    it can have many default and static method.
+    it is declared by using @FunctionalInterface annotaion at class level.
+    for functional method we do not need to create any implementaion class
+      we can implement using lambda expression.
+    
+EXAMPLE OF FUNCTIONAL INTERFACE :
+    Comparable interface which contain one abstract method
+       int compareTo(obj o);
+
+    Runnalbe interface 
+      contain void run();
+      etc..
+
+
+Example :
+        interface Test{
+            void sum(int a,int b);
+        }
+        Test t = (a, b) -> s.o.p(a+b);
+        int c = t.sum(2, 3);
+        s.o.p(c);
+
+    o/p: 5
+
+
+2.BUILT-IN FUNCTIONAL INTERFACE 
+I. PREDICATE:
+        It is a functional interface which contaion a method 
+      which take a argument and return boolean value.
+
+        EX:
+           @FunctionalInterface
+           interface Predicate<T>{
+              public boolean test(T t);
+           }
+  Basically, it is used when we want to test input 
+    satisfy the condition or not.
+
+EXAMPLE: 1.
+    class Test{
+      public static void main(String args[]){
+        Predicate<String> p = s -> s.length() > 0;
+        s.o.p(p.test(""));  // give false
+        s.o.p(p.test("Hello"));   //give true
+      }
+    }
+
+      2.
+      class Test{
+        public static void main(String args[]){
+          List<integer> l = Arrays.asList(1,2,3,4);
+          Predicate<integer> p = s -> s % 2 == 0;
+          List<Integer> l1 = l.stream()
+                                  .filter(p)
+                                  .collect(Coolecters.toList());
+        s.o.p (l1);  //[2,4]
+        }
+      }
+
+II. Function:
+        Function is a functional interface that have a abstract method 
+      which take a argument and return result.
+    EX:
+       interface Function<T, R>{
+          public T apply(T t);
+       }
+
+EXAMPLE: 1.
+    import java.util.function.Function;
+    class Test{
+      public static void main(String args[]){
+        Function<String , Integer> f = s -> s.length();
+        s.o.p(f.apply("Hello"));   //give 5
+      }
+    }
+
+2.
+import java.util.function.Function;
+import java.util.List;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
+class HelloWorld {
+    public static void main(String[] args) {
+        Function<String , Integer> f = s -> s.length();
+        List<String> l = Arrays.asList("heloo","hii","byy");
+        System.out.println(l);
+        List<Integer> l1 = l.stream()
+                                .map(f)
+                                .collect(Collectors.toList());
+        System.out.println(l1);
+    }
+}
+
+III. SUPPLIER:
+      functional interface that
+      Represent a supplier of result.
+          It does not take input and return result.
+
+      EX: 
+        @FunctionalInterface
+        public interface Supplier<T> {
+                T get();
+          }      
+      EX:
+      Supplier<String> s = () -> "Hello";
+        s.o.p(s.get());  // print Hello
+
+IV. CONSUME:
+          Functional interface that conatin a abstract method accept()
+      that take a argument but not return anything ( void ).
+
+    EX: 
+        @FunctionalInterface
+        public interface Consume<T> {
+               void  get(T t);
+          }      
+      EX:
+      consume<String> s = n -> s.o.p(n);
+        s.accept("Hello");  // print Hello
+
+      
+
+
+    
+
+    
   
+     
+ 
+            
+  
+
+
+                
+
+            
+    
+                  
+              
+ 
