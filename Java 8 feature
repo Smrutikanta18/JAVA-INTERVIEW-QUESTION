@@ -405,8 +405,198 @@ IV. CONSUME:
       consume<String> s = n -> s.o.p(n);
         s.accept("Hello");  // print Hello
 
-      
 
+
+
+
+
+                        LAMBDA EXPRESSION
+                      ``````````````````````
+1.
+  It is a anonymous function 
+        i. without name
+        ii. without return type
+        iii. without access modifier
+
+Ex: 1
+    public void sayHello(){
+        System.out.println("hello");
+    }
+  But using lamabda expression.
+      () -> System.out.println("hello");
+
+ Ex: 2
+    public void add(int a,int b){
+        System.out.println(a+b);
+    }
+    But using lambda expression
+    (a,b)->System.out.println(a+b);
+
+2. SOME TIPS FOR LAMBDA EXPRESSION:
+  - If there is only one statement then we can remove 
+      curly braces.
+  - If there is only paramete/argument then we can also
+      remove the parenthesis.  
+  - Compiler automatically can know the data type in this.
+  - No return keyword required.
+
+NOTE: 
+      Lambda expression is used a implemation for functional interface.
+      or functional interface acts as datatype of lambda expression.
+
+EX :- 
+    interface Test{
+      String name();
+    }
+    Test t = ()->{"sonu"};
+    System.out.println(t.name());
+
+
+
+
+
+                        DEFAULT METHOD
+                      ``````````````````
+1. Before java8, Interface have abstract methods is implemented in the implementation
+    class so,if we add a new method to the interface then we will have to implement
+    this method in all implementation class.
+  so, To overcome this problem java8 introduce default method in interface.
+      which allow interface to have method with implementation and can be accessible 
+    by all implementation classes.it add more functionality to the interface.
+
+
+EX:
+  interface Test{
+    void square(int a);
+    public default void display(){
+      System.out.println("Hello");
+    }
+  }
+  class Main implements Test{
+    @Override
+    public void square(int a){
+      System.out.println(a*a);
+    }
+  public static void main(String args[]){
+      Main m = new Main();
+        m.square(3); // 9
+        m.display(); // Hello
+  }
+  }
+
+2. CAN WE OVERRIDE DEFAULT METHOD : 
+    Yes, we can override the default method .
+  if any implementation class need that it own default
+  method then it will ovrride it .
+
+  Ex: 
+    interface Test{
+        void eat();
+        public defalut void sound(){
+            System.out.println("Hello how how");
+        }
+    }
+  class Main implements Test{
+    @Override
+    void eat(){
+        System.out.println("eating friut");
+    }
+    @Override
+    void sound(){
+      System.out.println("Bow bow");
+    }
+  public static void main(String args[]){
+        Main m = new Main();
+        m.eat(); // eating fruit
+        m.sound(); // Bow bow
+  }
+  } 
+
+
+to invoke the super class default method in overrriden method
+    class Main implements Test{
+      @Override
+      void eat(){
+      System.out.println("eating fruit");
+      }
+      @Override
+      void sound(){
+      this.Test.super();
+      System.out.println("Bow bow");
+      }
+  public static void main(String args[]){
+        Main m = new Main();
+        m.eat(); // eating fruit
+        m.sound(); // Hello how how Bow bow
+  }
+    }
+
+
+3. If two interface have same two default method
+    then by call directly by that methos it will give error.
+
+Ex:
+    class Main implements Person , Animal {
+      void display(){
+        Person.super.show();
+        Animal.super.show();
+      }
+      Public Static void main(String args[]){
+        Main m = new Main();
+          m.diplay();
+      }
+    }
+
+
+4. STATIC METHOS IN INTERFACE  
+    After java8, static method can be written in the interface.
+    which is declared with static keyword and method is implmenated
+    completely.
+    it can not be overriden so it provide security any implemetation class 
+can not overriden it.
+
+EX: 
+    interface Test{
+    void display();
+    static void hello(){
+      System.out.println("Hello);
+    } 
+    }
+    class Main implements Test{
+      @Override
+      public void display(){
+        System.out.println("Hii");
+      }
+    static void hello(){
+      System.out.pritnln("hey");
+    }
+    Public static void main(String args[]){
+      Main m= new Main();
+      m.display();  //  Hii
+      Test.hello(); // Hello
+      hello(); // hey
+    }
+    }
+
+
+
+
+
+                        METHOD REFERENCE
+                      ````````````````````
+  Short hand syntax for the lambda expression tht conation omly one 
+      method call  
+
+  Ex:
+    s -> System.out.pritnl(s); 
+
+or 
+
+  System.out::println
+
+Suppiler<List<String>> l = () -> new ArrayList<>();
+  or
+  Suppiler<List<String>> l = ArrayList::new;
 
     
 
